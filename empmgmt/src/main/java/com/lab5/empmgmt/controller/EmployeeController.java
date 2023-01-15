@@ -16,7 +16,7 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    // display list of employees
+    
     @GetMapping("/")
     public String viewHomePage(Model model) {
         model.addAttribute("listEmployees", employeeService.getAllEmployees());
@@ -25,7 +25,7 @@ public class EmployeeController {
 
     @GetMapping("/showNewEmployeeForm")
     public String showNewEmployeeForm(Model model) {
-        // create model attribute to bind form data
+       
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
         return "new_employee";
@@ -33,7 +33,7 @@ public class EmployeeController {
 
     @PostMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
-        // save employee to database
+        
         employeeService.saveEmployee(employee);
         return "redirect:/";
     }
